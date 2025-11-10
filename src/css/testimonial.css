@@ -157,125 +157,123 @@
 }
 
 
-@media screen and (min-width: 768px) and (max-width: 1279.98px) {
-  .testimonials {
-    background-color: var(--testi-bg, #E0CBB4);
-    min-height: 1281px;
+@media screen and (min-width: 768px) and (max-width: 1279.98px){
+
+
+  .testimonials{
+    background: #E0CBB4;   
+    min-height: 1281px;    
   }
 
-  .testimonials__container {
-   
+
+  .testimonials__container{
     max-width: 768px;
     margin-inline: auto;
-    padding: 64px 32px;
+    padding: 64px 32px;  
     display: flex;
     flex-direction: column;
     gap: 24px;
     box-sizing: border-box;
-
   }
 
-  /* Заголовок: "WHAT OUR VISITORS SAY" */
-  .testimonials__title {
-    width:  498px;
-    height: 43px;
-    text-transform: uppercase;
+
+  .testimonials__title{
+    width: 498px; 
+    height: 43px;       
     font-family: "Aboreto", serif;
+    font-weight: 400;
     font-size: 36px;
     line-height: 120%;
-    letter-spacing: -1px;
- 
+    letter-spacing: -0.36px;  
     text-transform: uppercase;
+    margin-top: 0;           
+    margin-bottom: 0;
   }
 
-  /* Сітка з 8 карток: 704×1086, 2 колонки, gap 24 */
-  .testimonials__grid {
+
+  .testimonials__grid{
     width: 704px;
-    height: 1086px; 
+    height: 1086px;        
     display: grid;
-    grid-template-columns: 340px 340px; 
-    justify-content: space-between;
+    grid-template-columns: 340px 340px;
     column-gap: 24px;
     row-gap: 24px;
+    justify-content: space-between;
+    margin: 0 auto;
     box-sizing: border-box;
   }
 
-  
-  .testimonials__card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
+  /* Картка: висота 253.5px (а не 253), щоб 4 ряди дали 1086 */
+  .testimonial{
     width: 340px;
     min-width: 310px;
-    height: 253.5px;
+    height: 253.5px;        /* ← ключова різниця */
     padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #C29D84;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 12px;
     box-sizing: border-box;
-
-    background: var(--testi-card, #C29D84);
-    border: 1px solid var(--stroke-border, rgba(0, 0, 0, 0.15));
-    border-radius: var(--radius-md, 12px);
   }
 
- 
-  .testimonials__body {
+  /* Внутрішній контент картки */
+  .testimonial__content{
+    width: 276px;           /* 340 - 32 - 32 */
     display: flex;
     flex-direction: column;
     gap: 24px;
-    width: 276px; /* 340 - 32 - 32 */
   }
 
-
-  .testimonials__stars {
+  /* Зірочки */
+  .testimonial__stars{
+    width: 116px;
+    height: 18.89px;
     display: flex;
     align-items: center;
     gap: 4px;
-    width: 116px;          
-    height: 18.89px;       
     line-height: 0;
   }
-  .testimonials__stars .icon {
-    width: 20px;
-    height: 20px;          /* майже відповідає 18.89; візуально ок */
-    fill: var(--star-fill, #111); 
-    flex: 0 0 auto;
-    display: inline-block;
+
+  /* Текст (варіанти висоти під макет) */
+  .testimonial__text{
+    width: 276px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: 0;
+    margin: 0;
   }
+  .testimonial__text--81  { height: 81px;  overflow: hidden; }
+  .testimonial__text--108 { height: 108px; overflow: hidden; }
+
+  /* Рядок із ім’ям */
+  .testimonial__name-row{
+    width: 276px;
+    min-height: 24px;       /* hug 24 */
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .testimonial__name{
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+  }
+}
   /* Варіанти темних/світлих зірок за потреби */
   .testimonials__stars.is-light .icon { fill: #fff; }
   .testimonials__stars.is-dark  .icon { fill: #111; }
 
 
-  .testimonials__text {
-    width: 276px;
-    max-width: 276px;
-    font-family: "Quicksand", sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 150%;   /* 27px — 3 рядки ≈ 81px, 4 рядки ≈ 108px */
-    letter-spacing: 0;
-  }
 
-  .testimonials__footer {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    width: 276px;
-    min-height: 24px;      
-  }
-
- 
-  .testimonials__name {
-    font-family: "Quicksand", sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;    
-    letter-spacing: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    
-  }
-}
 
 
   /* TESTIMONIALS — MOBILE
