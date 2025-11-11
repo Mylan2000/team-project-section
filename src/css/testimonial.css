@@ -2,22 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Raleway:wght@700;800&display=swap');
 
 :root{
-  /* КОЛИР ГОЛОВНОГО КОНТЕЙНЕРА (секції) */
-  --section-bg: #E0CBB4;   
+  --section-bg: #E0CBB4;   /* фон секції */
+  --card-bg: #C29D84;      /* фон карток */
 
-  /* КОЛІР 8 КАРТОК */
-  --card-bg: #C29D84;
-
-  
   --title-color: #2e2f42;
   --text-color: #2e2f42;
   --name-color: #2e2f42;
+
   --star-black: #111111;
   --star-white: #ffffff;
   --star-stroke: #111111;
 }
 
-
+/* ===== BASE / DESKTOP ===== */
 .testimonials{
   background: var(--section-bg);
   font-family: "Quicksand", system-ui, -apple-system, Arial, sans-serif;
@@ -32,76 +29,69 @@
 
   display: grid;
   grid-template-rows: auto 1fr;
-  row-gap: 24px; 
+  row-gap: 24px;
 }
 
-.testimonials__title {
+.testimonials__title{
   width: 416px;
   height: 116px;
-
-  margin: 0;                 
-  justify-self: start;     
-
-  display: block;            
+  margin: 0;
   font-family: "Aboreto", serif;
   font-weight: 400;
   font-size: 48px;
-  line-height: 120%;         
-  letter-spacing: -0.48px;   
+  line-height: 120%;
+  letter-spacing: -0.48px;
   color: var(--title-color);
-
   text-transform: uppercase;
   text-align: left;
-  white-space: normal;       
-  overflow-wrap: anywhere;  
 }
-
 
 .testimonials__grid{
   width: 1312px;
-  height: 630.78px;
   margin: 0 auto;
 
   display: grid;
   grid-template-columns: repeat(4, 310px);
-  grid-auto-rows: 303.39px;
-  gap: 24px;
+  gap: 24px;              /* НІЯКИХ fixed/auto-rows */
 }
-
 
 .testimonial{
   width: 310px;
-  height: 303.39px;
   padding: 32px;
   box-sizing: border-box;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 24px;
 
   background: var(--card-bg);
   border: 1px solid rgba(17,17,17,0.08);
   border-radius: 16px;
 }
 
-
 .testimonial__content{
   width: 246px;
-  min-height: var(--content-h, auto);
   display: flex;
   flex-direction: column;
-  gap: 24px; 
+  gap: 24px;
 }
 
-/* ЗІРКИ (116 ширина, 18.89 висота, gap 4) */
+/* ЗІРКИ */
 .testimonial__stars{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
   width: 116px;
   height: 18.89px;
+
   display: inline-flex;
   align-items: center;
   gap: 4px;
   line-height: 0;
 }
+.testimonial__stars li{ display: inline-flex; }
+
 .star{
   width: 18.89px;
   height: 18.89px;
@@ -109,40 +99,39 @@
   stroke: var(--star-stroke);
   stroke-width: 1;
 }
-/* фарбуємо перші N зірок у “чорні” */
-.testimonial__stars[data-rating="1"] .star:nth-child(-n+1),
-.testimonial__stars[data-rating="2"] .star:nth-child(-n+2),
-.testimonial__stars[data-rating="3"] .star:nth-child(-n+3),
-.testimonial__stars[data-rating="4"] .star:nth-child(-n+4),
-.testimonial__stars[data-rating="5"] .star:nth-child(-n+5){
+
+/* Фарбування перших N зірок у “чорні” */
+.testimonial__stars[data-rating="1"] li:nth-child(-n+1) .star,
+.testimonial__stars[data-rating="2"] li:nth-child(-n+2) .star,
+.testimonial__stars[data-rating="3"] li:nth-child(-n+3) .star,
+.testimonial__stars[data-rating="4"] li:nth-child(-n+4) .star,
+.testimonial__stars[data-rating="5"] li:nth-child(-n+5) .star{
   fill: var(--star-black);
   stroke: var(--star-black);
 }
 
-
+/* Текст + ім’я */
 .testimonial__text{
   width: 246px;
-  min-height: var(--text-h, auto);
+  margin: 0;
   font-weight: 400;
   font-size: 18px;
-  line-height: 150%; 
-  letter-spacing: 0;
+  line-height: 150%;
   color: var(--text-color);
-  margin: 0;
 }
-
 
 .testimonial__name-row{
   width: 246px;
-  height: 24px;
+  min-height: 24px;
   display: inline-flex;
   align-items: center;
   gap: 16px;
+  margin-top: auto;               /* ІМ’Я ПРИТИСНУТО ДО НИЗУ */
 }
 .testimonial__name{
   font-weight: 600;
   font-size: 16px;
-  line-height: 24px; 
+  line-height: 24px;
   color: var(--name-color);
   margin: 0;
   white-space: nowrap;
@@ -150,83 +139,123 @@
   text-overflow: ellipsis;
 }
 
-
+/* Фокус-видимість (a11y) */
 :focus-visible{
   outline: 2px solid #4d5ae5;
   outline-offset: 2px;
 }
 
-
+/* ===== TABLET (768–1279) ===== */
 @media screen and (min-width: 768px) and (max-width: 1279.98px){
-
-
   .testimonials{
-    background: #E0CBB4;   
-    min-height: 1281px;    
+    background: var(--section-bg);
+    min-height: 1281px;
   }
-
 
   .testimonials__container{
     max-width: 768px;
     margin-inline: auto;
-    padding: 64px 32px;  
+    padding: 64px 32px;
     display: flex;
     flex-direction: column;
     gap: 24px;
-    box-sizing: border-box;
   }
 
-
   .testimonials__title{
-    width: 498px; 
-    height: 43px;       
+    width: 498px;
+    height: 43px;
     font-family: "Aboreto", serif;
     font-weight: 400;
     font-size: 36px;
     line-height: 120%;
-    letter-spacing: -0.36px;  
+    letter-spacing: -0.36px;
     text-transform: uppercase;
-    margin-top: 0;           
-    margin-bottom: 0;
+    margin: 0;
   }
-
 
   .testimonials__grid{
     width: 704px;
-    height: 1086px;        
     display: grid;
     grid-template-columns: 340px 340px;
     column-gap: 24px;
     row-gap: 24px;
     justify-content: space-between;
     margin: 0 auto;
-    box-sizing: border-box;
   }
 
-  /* Картка: висота 253.5px (а не 253), щоб 4 ряди дали 1086 */
   .testimonial{
     width: 340px;
     min-width: 310px;
-    height: 253.5px;        /* ← ключова різниця */
     padding: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: #C29D84;
+    gap: 24px;
+    background: var(--card-bg);
     border: 1px solid rgba(0,0,0,0.15);
     border-radius: 12px;
     box-sizing: border-box;
   }
 
-  /* Внутрішній контент картки */
-  .testimonial__content{
-    width: 276px;           /* 340 - 32 - 32 */
+  .testimonial__content{ width: 276px; gap: 24px; }
+  .testimonial__text{ width: 276px; }
+}
+
+/* Модифікатори (якщо треба) */
+.testimonial__stars.is-light .star { fill: #fff; }
+.testimonial__stars.is-dark  .star { fill: #111; }
+
+/* ===== MOBILE (≤767.98) ===== */
+@media screen and (max-width: 767.98px){
+  .testimonials{
+    background-color: var(--section-bg);
+  }
+
+  .testimonials__container{
+    max-width: 320px;
+    margin-inline: auto;
+    padding: 64px 16px;
     display: flex;
     flex-direction: column;
     gap: 24px;
   }
 
-  /* Зірочки */
+  .testimonials__title{
+    width: 288px;
+    height: 86px;
+    text-transform: uppercase;
+    font-family: "Aboreto", serif;
+    font-size: 36px;
+    line-height: 120%;
+    letter-spacing: -1px;
+    margin: 0;
+  }
+
+  /* головний список карток — тут була основна помилка селектора */
+  .testimonials__grid{
+    width: 288px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .testimonial{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 288px;
+    min-width: 265px;
+    min-height: 235.89px;
+    padding: 32px;
+    background: var(--card-bg);
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+
+  .testimonial__content{ width: 224px; gap: 24px; }
+
   .testimonial__stars{
     width: 116px;
     height: 18.89px;
@@ -235,164 +264,29 @@
     gap: 4px;
     line-height: 0;
   }
+  .testimonial__stars .star{ width: 20px; height: 20px; }
 
-  /* Текст (варіанти висоти під макет) */
   .testimonial__text{
-    width: 276px;
+    width: 224px;
+    margin: 0;
     font-family: "Quicksand", sans-serif;
-    font-weight: 400;
     font-size: 18px;
     line-height: 150%;
-    letter-spacing: 0;
-    margin: 0;
   }
-  .testimonial__text--81  { height: 81px;  overflow: hidden; }
-  .testimonial__text--108 { height: 108px; overflow: hidden; }
 
-  /* Рядок із ім’ям */
   .testimonial__name-row{
-    width: 276px;
-    min-height: 24px;       /* hug 24 */
+    width: 224px;
+    min-height: 24px;
     display: flex;
     align-items: center;
     gap: 16px;
+    margin-top: auto;       /* важливо для «прилипання» імені донизу */
   }
   .testimonial__name{
     font-family: "Quicksand", sans-serif;
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0;
-  }
-}
-  /* Варіанти темних/світлих зірок за потреби */
-  .testimonials__stars.is-light .icon { fill: #fff; }
-  .testimonials__stars.is-dark  .icon { fill: #111; }
-
-
-
-
-
-  /* TESTIMONIALS — MOBILE
-   ≤ 767.98px*/
-  
-@media screen and (max-width: 767.98px) {
-  .testimonials {
-    background-color: var(--testi-bg, #E0CBB4);
-    min-height: 2563.11px;
-  }
-
-  .testimonials__container {
-
-    max-width: 320px;
-    margin-inline: auto;
-    padding: 64px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    box-sizing: border-box;
-   
-  }
-
-  /* Заголовок "WHAT OUR VISITORS SAY": 288×(hug 86), gap 24 */
-  .testimonials__title {
-    width: 288px;
-    height: 86px;
-    text-transform: uppercase;
-    font-family: "Aboreto", serif;
-    font-size: 36px;
-    line-height: 120%;
-    letter-spacing: -1px;
-   
-  }
-
-  /* Список з 8 карток: 288×(hug 2325.11), вертикальний флоу, gap 24 */
-  .testimonials__grid {
-    width: 288px;
-    display: flex;
-    flex-direction: column; 
-    gap: 24px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-
-  }
-
-  
-  .testimonials__card {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;             
-    width: 288px;
-    min-width: 265px;
-    /* height: auto;  — hug */
-    min-height: 235.89px;  
-    padding: 32px;
-    box-sizing: border-box;
-
-    background: var(--testi-card, #C29D84);
-    border: 1px solid var(--stroke-border, rgba(0, 0, 0, 0.15));
-    border-radius: var(--radius-md, 12px);
-  }
-*/
-  .testimonials__body {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 224px; /* 288 - 32 - 32 */
-  }
-
- 
-  .testimonials__stars {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    width: 116px;    
-    height: 18.89px;   
-    line-height: 0;
-  }
-  .testimonials__stars .icon {
-    width: 20px;
-    height: 20px;      
-    flex: 0 0 auto;
-    display: inline-block;
-    fill: var(--star-fill, #111); 
-  }
-  /* Варіанти для 2х кольорів через currentColor */
-  .icon--dark  { color: #111; fill: currentColor; }
-  .icon--light { color: #fff;  fill: currentColor; }
-
-  
-  .testimonials__text {
-    width: 224px;
-    max-width: 224px;
-    margin: 0;
-    font-family: "Quicksand", sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 150%;  
-    letter-spacing: 0;
-  }
-
- 
-  .testimonials__footer {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    width: 224px;
-    min-height: 24px;  
-  }
-
-  .testimonials__name {
-    font-family: "Quicksand", sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px; 
-    letter-spacing: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
